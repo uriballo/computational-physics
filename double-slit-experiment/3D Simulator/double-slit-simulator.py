@@ -11,11 +11,11 @@ GLOBAL VARIABLES
 """
 # Coordinates
 x0 = -0.125  # Minimum value of the X coordinate.
-xn = 2.  # Maximum value of the X coordinate.
-y0 = -2  # Minimum value of the Y coordinate.
-yn = 2   # Maximum value of the Y coordinate.
-z0 = -2  # Minimum value of the Z coordinate.
-zn = 2  # Maximum value of the Z coordinate.
+xn = 4.  # Maximum value of the X coordinate.
+y0 = -2.  # Minimum value of the Y coordinate.
+yn = 2.  # Maximum value of the Y coordinate.
+z0 = -4.  # Minimum value of the Z coordinate.
+zn = 4.  # Maximum value of the Z coordinate.
 
 # Grid Setup
 x = np.linspace(x0 + 0.125, xn, 100)
@@ -24,12 +24,12 @@ xx, yy = np.meshgrid(x, y)
 zz = xx * 0. + yy * 0.
 
 # Slits Setup
-slitsWidth = 0.055  # Width of the slits.
-rightSlitCenter = -0.125  # Center of the right slit along the Y axis.
-leftSlitCenter = 0.125  # Center of the left slit along the Y axis.
+slitsWidth = 0.2  # Width of the slits.
+rightSlitCenter = 0.4  # Center of the right slit along the Y axis.
+leftSlitCenter = -0.4  # Center of the left slit along the Y axis.
 
 # Wave Setup
-k = 2 * np.pi  # Wave number.
+k = 4.  # Wave number.
 w = 1.  # Angular velocity.
 
 # Discretization of the slits.
@@ -67,7 +67,7 @@ def printAxes(axes):
     axes.set_ylim(y0, yn)
     axes.set_zlim(z0, zn)
 
-    axes.set_title('Double Slit Simulation')
+    axes.set_title('Double Slit Simulation\n$\sin(kx - \omega t)$')
     axes.set_xlabel('$x\pi$')
     axes.set_ylabel('$y\pi$')
     axes.set_zlabel('$z$')
@@ -78,8 +78,9 @@ def printAxes(axes):
 def printAxesText(f, axes):
     axes.text(x0 - 1, y0, zn * 3.3, "Iteration = " + str(f))
     axes.text(x0 - 1, y0, zn * 3., "$k$ = " + str(k))
-    axes.text(x0 - 1, y0, zn * 2.7, "Slit Distance = " + str(rightSlitCenter - leftSlitCenter))
-    axes.text(x0 - 1, y0, zn * 2.4, "Slit Width = " + str(slitsWidth))
+    axes.text(x0 - 1, y0, zn * 2.7, "$\omega$ = " + str(w))
+    axes.text(x0 - 1, y0, zn * 2.4, "Slit Distance = " + str(rightSlitCenter - leftSlitCenter))
+    axes.text(x0 - 1, y0, zn * 2.1, "Slit Width = " + str(slitsWidth))
 
 
 def plotSuperposition(f, axes):
@@ -108,7 +109,7 @@ def plotSuperposition(f, axes):
 
     # "Normalize" zz so it fits in the plot.
     zz = zz / len(slitSourcePoints)
-    axes.plot_surface(xx, yy, zz, rstride=1, cstride=1, cmap=cm.Reds, alpha=0.6)
+    axes.plot_surface(xx, yy, zz, rstride=1, cstride=1, cmap=cm.RdBu, alpha=0.6)
 
 
 def getUserInput():
@@ -127,7 +128,6 @@ def getUserInput():
     slitsWidth = float(input("\n- Slit width: "))
     rightSlitCenter = float(input("- Right slit center [0<x<2]: "))
     leftSlitCenter = float(input("- Left slit center [-2<x<0]: "))
-
     print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
     os.system('cls' if os.name == 'nt' else 'clear')
     print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
