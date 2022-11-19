@@ -31,8 +31,8 @@ end
 ### `julia TISE.jl -p=gwell -s -S=gwell`
 ![gaussian well example](assets/gwell.png)
 ### `julia TISE.jl -p=esin -s -S=esin`
-![extended sine example](/assets/esin.png)
+![extended sine example](assets/esin.png)
 ### `julia TISE.jl -p=har -s -S=harmonic`
-![harmonic potential example](/assets/harmonic.png)
+![harmonic potential example](assets/harmonic.png)
 ### `julia TISE.jl -p=gwall -s -S=gausswall`
-![gaussian wall example](/assets/gausswall.png)
+![gaussian wall example](assets/gausswall.png)
