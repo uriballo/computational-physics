@@ -29,7 +29,7 @@ end
 ```
 ## Examples
 ### `julia TISE.jl -p=gwell -s -S=gwell`
-![gaussian well example](/assets/gwell.png)
+![gaussian well example](assets/gwell.png)
 ### `julia TISE.jl -p=esin -s -S=esin`
 ![extended sine example](/assets/esin.png)
 ### `julia TISE.jl -p=har -s -S=harmonic`
